@@ -6,8 +6,11 @@ onready var sprite1 = $Sprite1
 onready var gTimer = $Timer
 #tempo para aparecer a jogada do ghost
 
-export (int) var flag
+export (int) var flag = 0
+var dead = 0
+
 signal flag
+signal killed
 
 onready var windowsSize = get_viewport_rect().size
 
@@ -18,15 +21,19 @@ func _ready():
 	gTimer.start()
 	
 
-#func _process(delta):
-#	pass
-
 #var jogada = 0, 1, 2
 func set_play():
 	randomize()
-	flag = int(rand_range(0,2))
+	flag = randi()%3
 	#escolher textura da Sprite1
 	emit_signal("flag", flag)
+	
+func enemyDead():
+	#quando morto
+	#animação de morte
+	emit_signal("killed")
+	#eliminar instancia do inimigo
+
 
 
 func _on_Timer_timeout():

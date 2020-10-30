@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 window/size/width=600
 window/size/height=1024
+window/size/borderless=true
 window/vsync/use_vsync=false
 
 [rendering]
