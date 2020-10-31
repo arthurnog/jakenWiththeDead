@@ -30,19 +30,22 @@ func _on_spawn_timeout():
 	
 func enemyKill():
 	score += 1
+	get_parent().get_node("GUI/MarginContainer/ScoreCounter").text = "SCORE = " + str(score)
 	spawn.start()
 	#get_parent().get_node("GUI/Container/killCounter").text = "Eliminados = " + str(kills)
 	
 func playerDefeat():
 	currentEnemy.enemyWin()
 	spawn.start()
-	pass
 
+func gameOver():
+	get_tree().quit()
 
 func _on_Button0_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button0").value
 	if value == currentFlag:
 		currentEnemy.enemyDead()
+	get_parent().get_node("GUI/buttonContainer").hide()
 	#else
 		#player foge
 
@@ -50,6 +53,7 @@ func _on_Button1_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button1").value
 	if value == currentFlag:
 		currentEnemy.enemyDead()
+	get_parent().get_node("GUI/buttonContainer").hide()
 	#else
 		#player foge
 
@@ -57,5 +61,6 @@ func _on_Button2_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button2").value
 	if value == currentFlag:
 		currentEnemy.enemyDead()
+	get_parent().get_node("GUI/buttonContainer").hide()
 	#else
 		#player foge
