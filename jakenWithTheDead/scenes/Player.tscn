@@ -31,7 +31,7 @@ frames = SubResource( 1 )
 animation = "running"
 
 [node name="reactionTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.8
 one_shot = true
 
 [node name="scaryTimer" type="Timer" parent="."]

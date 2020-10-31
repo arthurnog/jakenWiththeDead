@@ -1,12 +1,14 @@
 extends Node
 
 onready var spawn = get_parent().get_node("spawn")
+onready var player = get_parent().get_node("Player")
 var score = 0
 var enemy = preload("res://scenes/Ghost.tscn")
 var currentFlag = -1
 var currentEnemy = null
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +28,7 @@ func set_flag(flag):
 
 func _on_spawn_timeout():
 	enemySpawn()
+	#player.get_node("reactionTimer").start()
 	pass # Replace with function body.
 	
 func enemyKill():
@@ -46,6 +49,8 @@ func _on_Button0_pressed():
 	if value == currentFlag:
 		currentEnemy.enemyDead()
 	get_parent().get_node("GUI/buttonContainer").hide()
+	get_parent().get_node("GUI/ProgressBar").hide()
+	#get_parent().get_node("Scenery").play()
 	#else
 		#player foge
 
@@ -54,6 +59,8 @@ func _on_Button1_pressed():
 	if value == currentFlag:
 		currentEnemy.enemyDead()
 	get_parent().get_node("GUI/buttonContainer").hide()
+	get_parent().get_node("GUI/ProgressBar").hide()
+	#get_parent().get_node("Scenery").play()
 	#else
 		#player foge
 
@@ -62,5 +69,7 @@ func _on_Button2_pressed():
 	if value == currentFlag:
 		currentEnemy.enemyDead()
 	get_parent().get_node("GUI/buttonContainer").hide()
+	get_parent().get_node("GUI/ProgressBar").hide()
+	#get_parent().get_node("Scenery").play()
 	#else
 		#player foge

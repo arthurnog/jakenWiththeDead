@@ -1,27 +1,27 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Container.gd" type="Script" id=2]
 [ext_resource path="res://scripts/enemyFarm.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Button.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/THE CREEPY HUNTER.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Scenery.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/Tween.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 49
 outline_size = 2
 outline_color = Color( 0.0784314, 0.0235294, 0.0156863, 1 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="DynamicFont" id=2]
+size = 42
+outline_size = 2
+font_data = ExtResource( 5 )
 
 [node name="GAME" type="Node2D"]
+
+[node name="Scenery" parent="." instance=ExtResource( 6 )]
 
 [node name="spawn" type="Timer" parent="."]
 wait_time = 2.0
@@ -83,9 +83,9 @@ __meta__ = {
 }
 
 [node name="ScoreCounter" type="Label" parent="GUI/MarginContainer"]
-margin_top = 10.0
+margin_top = 11.0
 margin_right = 285.0
-margin_bottom = 70.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 0, 60 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.960784, 0.313726, 0.0901961, 1 )
@@ -93,14 +93,41 @@ text = "score = 0"
 valign = 1
 uppercase = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI"]
+margin_top = 80.0
+margin_right = 285.0
+margin_bottom = 162.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="scenery" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="LifeCounter" type="Label" parent="GUI/MarginContainer2"]
+margin_top = 11.0
+margin_right = 285.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.960784, 0.313726, 0.0901961, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "lives = 3"
+valign = 1
+uppercase = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/scenery"]
-position = Vector2( 567.966, 525.119 )
-scale = Vector2( 1, 16.3576 )
-frames = SubResource( 2 )
+[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+visible = false
+anchor_left = 0.3
+anchor_top = 0.892
+anchor_right = 0.7
+anchor_bottom = 0.914
+margin_right = 4.0
+margin_bottom = 14.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="GUI"]
+script = ExtResource( 7 )
 [connection signal="timeout" from="spawn" to="enemyFarm" method="_on_spawn_timeout"]
 [connection signal="pressed" from="GUI/buttonContainer/Button0" to="Player" method="_on_Button0_pressed"]
 [connection signal="pressed" from="GUI/buttonContainer/Button0" to="enemyFarm" method="_on_Button0_pressed"]
