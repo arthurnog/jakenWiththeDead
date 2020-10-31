@@ -1,9 +1,10 @@
 extends Node
 
-onready var timer = get_parent().get_node("spawn")
+onready var spawn = get_parent().get_node("spawn")
 var score = 0
 var enemy = preload("res://scenes/Ghost.tscn")
-#var alive = 0
+var currentFlag = -1
+var currentEnemy = null
 func _ready():
 	pass # Replace with function body.
 
@@ -15,10 +16,13 @@ func _ready():
 func enemySpawn():
 	var enemyInstance = enemy.instance()
 	enemyInstance.connect("flag", get_parent().get_node("GUI/buttonContainer"), "set_buttons")
+	enemyInstance.connect("flag", self, "set_flag")
 	enemyInstance.connect("killed", self, "enemyKill")
 	add_child(enemyInstance)
+	currentEnemy = enemyInstance
 	
-
+func set_flag(flag):
+	currentFlag = flag
 
 func _on_spawn_timeout():
 	enemySpawn()
@@ -26,28 +30,32 @@ func _on_spawn_timeout():
 	
 func enemyKill():
 	score += 1
-	timer.start()
+	spawn.start()
 	#get_parent().get_node("GUI/Container/killCounter").text = "Eliminados = " + str(kills)
-
+	
+func playerDefeat():
+	currentEnemy.enemyWin()
+	spawn.start()
+	pass
 
 
 func _on_Button0_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button0").value
-	if value == enemy.flag:
-		enemy.enemyDead()
+	if value == currentFlag:
+		currentEnemy.enemyDead()
 	#else
 		#player foge
 
 func _on_Button1_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button1").value
-	if value == enemy.flag:
-		enemy.enemyDead()
+	if value == currentFlag:
+		currentEnemy.enemyDead()
 	#else
 		#player foge
 
 func _on_Button2_pressed():
 	var value = get_parent().get_node("GUI/buttonContainer/Button2").value
-	if value == enemy.flag:
-		enemy.enemyDead()
+	if value == currentFlag:
+		currentEnemy.enemyDead()
 	#else
 		#player foge

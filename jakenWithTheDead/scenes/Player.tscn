@@ -1,14 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "running",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "fleeing",
+"speed": 5.0
+} ]
+
 [node name="Player" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.68369, 2.24491 )
 scale = Vector2( 2.31538, 2.33292 )
-texture = ExtResource( 1 )
+frames = SubResource( 1 )
+animation = "running"
 
 [node name="reactionTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="scaryTimer" type="Timer" parent="."]
+wait_time = 1.344
+one_shot = true
+[connection signal="timeout" from="reactionTimer" to="." method="_on_reactionTimer_timeout"]
+[connection signal="timeout" from="scaryTimer" to="." method="_on_scaryTimer_timeout"]

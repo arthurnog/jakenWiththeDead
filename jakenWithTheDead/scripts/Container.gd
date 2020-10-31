@@ -4,9 +4,13 @@ onready var b0 = $Button0
 onready var b1 = $Button1
 onready var b2 = $Button2
 onready var buttons = [b0,b1,b2]
+onready var player = get_parent().get_parent().get_node("Player")
+
+signal buttonReady
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.connect("buttonReady", player, "reactionTime")
 	pass # Replace with function body.
 
 
@@ -21,6 +25,7 @@ func set_buttons(flag):
 	if flag == 0:
 		#pedra
 		buttons[i].value = 0
+		#buttons[i].set_Icon(preload("res://icon.png"))
 		#buttons[i].set_text("0")
 		if i == 0:
 			randomize()
@@ -40,6 +45,7 @@ func set_buttons(flag):
 	elif flag == 1:
 		#papel
 		buttons[i].value = 1
+		#buttons[i].set_Icon(preload("res://icon.png"))
 		if i == 0:
 			randomize()
 			b1.value = randi()%3
@@ -58,6 +64,7 @@ func set_buttons(flag):
 	elif flag == 2:
 		#tesoura
 		buttons[i].value = 2
+		#buttons[i].set_Icon(preload("res://icon.png"))
 		if i == 0:
 			randomize()
 			b1.value = randi()%3
@@ -74,4 +81,5 @@ func set_buttons(flag):
 			randomize()
 			b0.value = randi()%3
 	self.show()
+	
 

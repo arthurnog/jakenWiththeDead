@@ -29,12 +29,14 @@ func set_play():
 	emit_signal("flag", flag)
 	
 func enemyDead():
-	#quando morto
-	#animação de morte
+	$Sprite.play("die")
+	yield($Sprite,"animation_finished")
 	emit_signal("killed")
-	#eliminar instancia do inimigo
+	queue_free()
 
-
+func enemyWin():
+	#$Sprite.play("win")
+	queue_free()
 
 func _on_Timer_timeout():
 	set_play()

@@ -19,12 +19,19 @@ config/name="jakenWithTheDead"
 run/main_scene="res://scenes/GAME.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=600
 window/size/height=1024
-window/size/borderless=true
+window/size/test_width=300
+window/size/test_height=512
 window/vsync/use_vsync=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [rendering]
 
