@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-export (int) var vel = 100
+export (int) var vel = 160
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -15,6 +15,6 @@ func _process(delta):
 func backwards():
 	vel = -300
 func forwards():
-	vel = 100
+	vel = 160
 func stop():
 	vel = 0

@@ -48,7 +48,7 @@ func enemyDead():
 
 func empate():
 	$Sprite1.hide()
-	$Timer.start()
+	gTimer.start()
 	
 
 func enemyWin():
@@ -56,7 +56,6 @@ func enemyWin():
 	queue_free()
 
 func _on_Timer_timeout():
-	yield($audio1,"finished")
 	set_play()
 	sprite1.show()
 	pass # Replace with function body.

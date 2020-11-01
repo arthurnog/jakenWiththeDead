@@ -12,8 +12,6 @@ animations = [ {
 } ]
 
 [node name="Scenery" type="Node2D"]
-modulate = Color( 0.631373, 0.164706, 0.164706, 1 )
-self_modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1024 )
