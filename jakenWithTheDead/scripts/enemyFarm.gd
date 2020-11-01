@@ -51,6 +51,10 @@ func _on_Button0_pressed():
 	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
 		player.emit_signal("imOk")
+		player.get_node("Sprite").play("running")
+	if currentFlag == value:
+		currentEnemy.empate()
+		player.get_node("reactionTimer").stop()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()
@@ -63,6 +67,10 @@ func _on_Button1_pressed():
 	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
 		player.emit_signal("imOk")
+		player.get_node("Sprite").play("running")
+	if currentFlag == value:
+		currentEnemy.empate()
+		player.get_node("reactionTimer").stop()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()
@@ -75,6 +83,10 @@ func _on_Button2_pressed():
 	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
 		player.emit_signal("imOk")
+		player.get_node("Sprite").play("running")
+	if currentFlag == value:
+		currentEnemy.empate()
+		player.get_node("reactionTimer").stop()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()

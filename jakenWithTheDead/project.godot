@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="jakenWithTheDead"
-run/main_scene="res://scenes/GAME.tscn"
+run/main_scene="res://scenes/INICIO.tscn"
 config/icon="res://icon.png"
 
 [debug]
 
-settings/fps/force_fps=60
+settings/fps/force_fps=30
 
 [display]
 
@@ -32,6 +32,17 @@ window/size/test_height=512
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+mouse={
+"deadzone": 0.5,
+"events": [  ]
+}
+
+[physics]
+
+common/physics_fps=30
 
 [rendering]
 

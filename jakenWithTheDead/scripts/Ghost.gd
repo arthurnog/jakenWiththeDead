@@ -38,6 +38,11 @@ func enemyDead():
 	emit_signal("killed")
 	queue_free()
 
+func empate():
+	$Sprite1.hide()
+	$Timer.start()
+	
+
 func enemyWin():
 	#$Sprite.play("win")
 	queue_free()

@@ -31,6 +31,7 @@ func playerFlee():
 		emit_signal("defeat")
 		$Sprite.play("fleeing")
 		$scaryTimer.start()
+		$reactionTimer.stop()
 		lifes -= 1
 		get_parent().get_node("GUI/MarginContainer2/LifeCounter").text = "LIVES = " + str(lifes)
 		get_parent().get_node("GUI/buttonContainer").hide()
@@ -40,7 +41,9 @@ func playerFlee():
 func _on_Button0_pressed():
 #	var value = get_parent().get_node("GUI/buttonContainer/Button0").value
 #	if value != get_parent().get_node("enemyFarm").currentFlag:
-	if not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button0").value):
+	if get_parent().get_node("enemyFarm").currentFlag == get_parent().get_node("GUI/buttonContainer/Button0").value:
+		pass
+	elif not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button0").value):
 		playerFlee()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
@@ -49,7 +52,9 @@ func _on_Button0_pressed():
 func _on_Button1_pressed():
 	#var value = get_parent().get_node("GUI/buttonContainer/Button1").value
 	#if value != get_parent().get_node("enemyFarm").currentFlag:
-	if not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button1").value):
+	if get_parent().get_node("enemyFarm").currentFlag == get_parent().get_node("GUI/buttonContainer/Button1").value:
+		pass
+	elif not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button1").value):
 		playerFlee()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
@@ -58,7 +63,9 @@ func _on_Button1_pressed():
 func _on_Button2_pressed():
 	#var value = get_parent().get_node("GUI/buttonContainer/Button2").value
 	#if value != get_parent().get_node("enemyFarm").currentFlag:
-	if not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button2").value):
+	if get_parent().get_node("enemyFarm").currentFlag == get_parent().get_node("GUI/buttonContainer/Button2").value:
+		pass
+	elif not get_parent().get_node("enemyFarm").acertou(get_parent().get_node("enemyFarm").currentFlag,get_parent().get_node("GUI/buttonContainer/Button2").value):
 		playerFlee()
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()

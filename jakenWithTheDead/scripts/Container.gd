@@ -129,8 +129,7 @@ func set_buttons(flag):
 	get_parent().get_node("ProgressBar").value = 0
 	get_parent().get_node("ProgressBar").show()
 	get_parent().get_node("Tween").interpolate_property(get_parent().get_node("ProgressBar"),"value", get_parent().get_node("ProgressBar").value, 100, player.get_node("reactionTimer").get_wait_time())
-	print(player.get_node("reactionTimer").get_wait_time())
-	print(get_parent().get_node("ProgressBar").value)
+	player.get_node("Sprite").play("idle")
 	get_parent().get_node("Tween").start()
 	emit_signal("stopScenery")
 	emit_signal("buttonReady")

@@ -5,9 +5,9 @@ export (int) var vel = 100
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if vel > 0:
-		position.y = -1024
+		position.y += -1024*2
 	elif vel < 0:
-		position.y = 1024
+		position.y += 1024*2
 
 func _process(delta):
 	position.y += vel*delta

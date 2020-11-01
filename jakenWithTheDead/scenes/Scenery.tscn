@@ -31,7 +31,6 @@ centered = false
 script = ExtResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="AnimatedSprite3"]
-position = Vector2( 5.54102, 2054.95 )
 rect = Rect2( 0, 0, 600, 1024 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
