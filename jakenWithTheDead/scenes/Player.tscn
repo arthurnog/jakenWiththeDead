@@ -13,14 +13,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "running",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "fleeing",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "running",
 "speed": 7.0
 } ]
 
@@ -41,5 +41,7 @@ one_shot = true
 [node name="scaryTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="reactionTimer" to="." method="_on_reactionTimer_timeout"]
 [connection signal="timeout" from="scaryTimer" to="." method="_on_scaryTimer_timeout"]

@@ -3,6 +3,7 @@ extends Node2D
 onready var sprite = $Sprite
 #substituir pelas animações
 onready var timer = $reactionTimer
+onready var sounds = [load("res://assets/sounds/mc_running_0.wav"),load("res://assets/sounds/mc_running_1.wav"),load("res://assets/sounds/mc_running_2.wav")]
 #tempo que o jogador tem para reagir
 signal defeat
 signal gameOver
@@ -32,6 +33,10 @@ func playerFlee():
 		$Sprite.play("fleeing")
 		$scaryTimer.start()
 		$reactionTimer.stop()
+		randomize()
+		var i = randi()%3
+		$AudioStreamPlayer.stream = sounds[i]
+		$AudioStreamPlayer.play()
 		lifes -= 1
 		get_parent().get_node("GUI/MarginContainer2/LifeCounter").text = "LIVES = " + str(lifes)
 		get_parent().get_node("GUI/buttonContainer").hide()
@@ -74,6 +79,7 @@ func _on_Button2_pressed():
 func _on_scaryTimer_timeout():
 	$Sprite.play("running")
 	emit_signal("imOk")
+	$AudioStreamPlayer.stop()
 	#cenário corre pra frente
 
 func reactionTime():

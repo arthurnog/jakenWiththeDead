@@ -36,4 +36,8 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="audio1" type="AudioStreamPlayer" parent="."]
+
+[node name="audio2" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
