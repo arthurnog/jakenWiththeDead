@@ -31,11 +31,11 @@ frames = SubResource( 1 )
 animation = "running"
 
 [node name="reactionTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 2.0
 one_shot = true
 
 [node name="scaryTimer" type="Timer" parent="."]
-wait_time = 1.344
+wait_time = 2.5
 one_shot = true
 [connection signal="timeout" from="reactionTimer" to="." method="_on_reactionTimer_timeout"]
 [connection signal="timeout" from="scaryTimer" to="." method="_on_scaryTimer_timeout"]

@@ -24,6 +24,16 @@ script = ExtResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="AnimatedSprite"]
 rect = Rect2( 0, 0, 600, 1024 )
 
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 1024 )
+frames = SubResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="AnimatedSprite3"]
+position = Vector2( 5.54102, 2054.95 )
+rect = Rect2( 0, 0, 600, 1024 )
+
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 centered = false
@@ -32,4 +42,5 @@ script = ExtResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="AnimatedSprite2"]
 rect = Rect2( 0, 0, 600, 1024 )
 [connection signal="screen_exited" from="AnimatedSprite/VisibilityNotifier2D" to="AnimatedSprite" method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="AnimatedSprite3/VisibilityNotifier2D" to="AnimatedSprite3" method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="screen_exited" from="AnimatedSprite2/VisibilityNotifier2D" to="AnimatedSprite2" method="_on_VisibilityNotifier2D_screen_exited"]

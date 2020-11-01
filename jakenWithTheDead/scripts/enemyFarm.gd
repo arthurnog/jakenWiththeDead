@@ -38,16 +38,19 @@ func enemyKill():
 	#get_parent().get_node("GUI/Container/killCounter").text = "Eliminados = " + str(kills)
 	
 func playerDefeat():
-	currentEnemy.enemyWin()
+	if currentEnemy:
+		currentEnemy.enemyWin()
 	spawn.start()
 
 func gameOver():
 	get_tree().quit()
 
 func _on_Button0_pressed():
+	print("ok")
 	var value = get_parent().get_node("GUI/buttonContainer/Button0").value
-	if value == currentFlag:
+	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
+		player.emit_signal("imOk")
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()
@@ -55,9 +58,11 @@ func _on_Button0_pressed():
 		#player foge
 
 func _on_Button1_pressed():
+	print("ok")
 	var value = get_parent().get_node("GUI/buttonContainer/Button1").value
-	if value == currentFlag:
+	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
+		player.emit_signal("imOk")
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()
@@ -65,11 +70,22 @@ func _on_Button1_pressed():
 		#player foge
 
 func _on_Button2_pressed():
+	print("ok")
 	var value = get_parent().get_node("GUI/buttonContainer/Button2").value
-	if value == currentFlag:
+	if acertou(currentFlag,value):
 		currentEnemy.enemyDead()
+		player.emit_signal("imOk")
 	get_parent().get_node("GUI/buttonContainer").hide()
 	get_parent().get_node("GUI/ProgressBar").hide()
 	#get_parent().get_node("Scenery").play()
 	#else
 		#player foge
+
+func acertou(flag,value):
+	if flag == 0:
+		return value == 1
+	if flag == 1:
+		return value == 2
+	if flag == 2:
+		return value == 0
+	#return flag == (value+1)%3

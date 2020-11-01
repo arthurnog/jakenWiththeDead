@@ -4,6 +4,7 @@ onready var sprite0 = $Sprite
 onready var sprite1 = $Sprite1
 #substituir pelas animações
 onready var gTimer = $Timer
+onready var ghostHands = [preload("res://assets/sprites/pedra_fantasma.png"),preload("res://assets/sprites/papel_fantasma.png"),preload("res://assets/sprites/tesoura_fantasma.png")]
 #tempo para aparecer a jogada do ghost
 
 export (int) var flag = 0
@@ -25,11 +26,14 @@ func _ready():
 func set_play():
 	randomize()
 	flag = randi()%3
+	$Sprite1.texture = ghostHands[flag]
 	#escolher textura da Sprite1
 	emit_signal("flag", flag)
 	
 func enemyDead():
 	$Sprite.play("die")
+	dead = 1
+	get_parent().get_node("../Player/reactionTimer").stop()
 	yield($Sprite,"animation_finished")
 	emit_signal("killed")
 	queue_free()
