@@ -34,6 +34,7 @@ position = Vector2( 1.68369, 2.24491 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
 animation = "running"
+frame = 1
 playing = true
 
 [node name="reactionTimer" type="Timer" parent="."]

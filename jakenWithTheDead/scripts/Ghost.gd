@@ -24,6 +24,7 @@ func _ready():
 	$audio1.stream = aSound[i]
 	$audio1.play()
 	$audio2.stream = dSound[i]
+	$Sprite.speed_scale = 1
 	$Sprite.play("show")
 	$Tween.interpolate_property(self, "position", position, position+Vector2(0,200),1)
 	$Tween.start()
@@ -39,6 +40,7 @@ func set_play():
 	emit_signal("flag", flag)
 	
 func enemyDead():
+	$Sprite.speed_scale = 1
 	$Sprite.play("die")
 	dead = 1
 	get_parent().get_node("../Player/reactionTimer").stop()
@@ -53,11 +55,13 @@ func empate():
 	
 
 func enemyWin():
-	#$Sprite.play("win")
+	$Sprite.play("janken")
+	yield($Sprite,"animation_finished")
 	queue_free()
 
 func _on_Timer_timeout():
 	set_play()
 	sprite1.show()
-	$Sprite.play("idle")
+	$Sprite.speed_scale = 0.7
+	$Sprite.play("janken")
 	pass # Replace with function body.
