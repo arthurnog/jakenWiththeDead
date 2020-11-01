@@ -31,6 +31,7 @@ func playerFlee():
 	if lifes > -1:
 		emit_signal("defeat")
 		$Sprite.play("fleeing")
+		$Sprite.speed_scale = 1
 		$scaryTimer.start()
 		$reactionTimer.stop()
 		randomize()
@@ -84,8 +85,10 @@ func _on_scaryTimer_timeout():
 
 func reactionTime():
 	$reactionTimer.start()
+	$Sprite.speed_scale = 0.5
 	#$Tween.interpolate_property($ProgressBar, "value", $ProgressBar.value, 100, $reactionTimer.get_timer_process_mode())
 
 func _on_reactionTimer_timeout():
+	$Sprite.speed_scale = 1
 	playerFlee()
 	

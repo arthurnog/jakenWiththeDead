@@ -24,6 +24,7 @@ func _ready():
 	$audio1.stream = aSound[i]
 	$audio1.play()
 	$audio2.stream = dSound[i]
+	$Sprite.play("show")
 	$Tween.interpolate_property(self, "position", position, position+Vector2(0,200),1)
 	$Tween.start()
 	gTimer.start()
@@ -58,4 +59,5 @@ func enemyWin():
 func _on_Timer_timeout():
 	set_play()
 	sprite1.show()
+	$Sprite.play("idle")
 	pass # Replace with function body.
